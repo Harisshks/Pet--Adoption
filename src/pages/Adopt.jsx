@@ -10,28 +10,28 @@ const pets = [
     name: 'Buddy',
     breed: 'Golden Retriever',
     age: '2 years',
-    image: adoptImage,  // Use the imported image
+    image: adoptImage,  
   },
   {
     id: 2,
     name: 'Max',
     breed: 'German Shepherd',
     age: '3 years',
-    image: doggquoteImage,  // Use the imported image
+    image: doggquoteImage, 
   },
   {
     id: 3,
     name: 'Bella',
     breed: 'Labrador',
     age: '1 year',
-    image: imagesImage,  // Use the imported image
+    image: imagesImage,
   },
   {
     id: 4,
     name: 'Lucy',
     breed: 'Beagle',
     age: '4 years',
-    image: adoptImage,  // Use the imported image
+    image: adoptImage,  
   },
 ];
 
