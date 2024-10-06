@@ -4,12 +4,15 @@ import Navbar from '../components/Navbar';
 import adoptImage from '../assests/img/adopt-a-pet.jpg';  
 import doggquoteImage from '../assests/img/doggoquote.jpg';
 import imagesImage from '../assests/img/images.jpeg';
+import gold from '../assests/img/gold.jpg'; 
+import beagle from '../assests/img/beagle.jpg'; 
+
 
 const pets = [
-  { id: 1, name: 'Buddy', breed: 'Golden Retriever', age: '2 years', image: adoptImage },
+  { id: 1, name: 'Buddy', breed: 'Golden Retriever', age: '2 years', image: gold },
   { id: 2, name: 'Max', breed: 'German Shepherd', age: '3 years', image: doggquoteImage },
   { id: 3, name: 'Bella', breed: 'Labrador', age: '1 year', image: imagesImage },
-  { id: 4, name: 'Lucy', breed: 'Beagle', age: '4 years', image: adoptImage },
+  { id: 4, name: 'Lucy', breed: 'Beagle', age: '4 years', image: beagle },
 ];
 
 const Adopt = () => {
