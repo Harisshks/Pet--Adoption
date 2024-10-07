@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const petSchema = new mongoose.Schema({
   petimg: {
-    type: String,
+    type: String, // URL to the image
     required: true,
   },
   petname: {

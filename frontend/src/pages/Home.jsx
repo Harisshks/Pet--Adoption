@@ -21,7 +21,7 @@ const Home = () => {
       <div>
         {/* Section 1 */}
         <div className='h-screen w-full'>
-          <img src={myim} className='h-full w-full' alt="Adopt a Pet"></img>
+          <img src={myim} className='h-[80%] w-full justify-center' alt="Adopt a Pet"></img>
         </div>
 
         {/* Section 2 */}
@@ -143,9 +143,9 @@ const Home = () => {
         </div>
 
         {/* Section 4 - Accordion */}
-        <div className="flex items-center justify-center h-screen bg-white px-4">
+        <div className="flex items-center justify-center h-[100%] bg-white px-4 pt-16">
   <div className="max-w-screen-xl mx-auto w-full md:w-2/3 lg:w-1/2">
-    <div className="space-y-16">
+    <div className="space-y-8">
       <div className="border-b border-gray-300 py-4">
         <div className="flex justify-between items-center cursor-pointer" onClick={() => toggleAccordion(1)}>
           <h3 className="text-lg font-semibold text-gray-800">Why Should You Adopt a Dog or Cat?</h3>
@@ -204,9 +204,6 @@ const Home = () => {
     </div>
   </div>
 </div>
-
-
-
       </div>
     </>
   );

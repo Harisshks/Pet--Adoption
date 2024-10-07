@@ -7,6 +7,8 @@ app.use(express.json());
 const dbConn = require("./config/db");
 const Pets = require("./routes/petRoute");
 
+app.use('/uploads', express.static('uploads'));
+
 
 const port = process.env.PORT || 8888;
 app.use("/pets", Pets);
