@@ -25,74 +25,128 @@ const Contact = () => {
       <div className="min-h-screen bg-gray-50 py-12">
         <div className="container mx-auto px-4">
           <h1 className="text-4xl font-bold text-gray-800 text-center mb-8">Contact Us</h1>
+          
           {showConfirmation && (
             <div className="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-4" role="alert">
               <p>{message}</p>
             </div>
           )}
-          <form onSubmit={handleSubmit} className="bg-white rounded-lg shadow-lg p-8 max-w-lg mx-auto">
-            <div className="mb-4">
-              <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="name">
-                Name
-              </label>
-              <input
-                type="text"
-                id="name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                required
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              />
+          
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {/* Left Side: Contact Form */}
+            <form onSubmit={handleSubmit} className="bg-white rounded-lg shadow-lg p-8">
+              <h2 className="text-2xl font-semibold text-gray-800 mb-4">Get In Touch</h2>
+              <div className="mb-4">
+                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="name">
+                  Name
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  required
+                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                />
+              </div>
+              <div className="mb-4">
+                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
+                  Email
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                />
+              </div>
+              <div className="mb-4">
+                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="phone">
+                  Phone Number
+                </label>
+                <input
+                  type="tel"
+                  id="phone"
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
+                  required
+                  pattern="[0-9]{10}"
+                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                />
+              </div>
+              <div className="mb-4">
+                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="petId">
+                  Pet ID
+                </label>
+                <input
+                  type="text"
+                  id="petId"
+                  value={petId}
+                  onChange={(e) => setPetId(e.target.value)}
+                  required
+                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                />
+              </div>
+              <div className="flex items-center justify-between">
+                <button
+                  type="submit"
+                  className="bg-orange-500 hover:bg-orange-600 text-white font-semibold py-2 px-4 rounded-lg"
+                >
+                  Submit
+                </button>
+              </div>
+            </form>
+
+            {/* Right Side: Contact Information */}
+            <div className="bg-white rounded-lg shadow-lg p-8">
+              <h2 className="text-2xl font-semibold text-gray-800 mb-4">Our Contact Information</h2>
+              <p className="text-gray-600 mb-4">
+                If you have any questions or need assistance, feel free to reach out to us via the contact form or using the information below:
+              </p>
+              <div className="mb-4">
+                <h3 className="font-semibold text-gray-700">Email:</h3>
+                <p className="text-gray-600">pawNest@petadoption.com</p>
+              </div>
+              <div className="mb-4">
+                <h3 className="font-semibold text-gray-700">Phone:</h3>
+                <p className="text-gray-600">+91 1234567890</p>
+              </div>
+              <div className="mb-4">
+                <h3 className="font-semibold text-gray-700">Address:</h3>
+                <p className="text-gray-600">123 Pet Lane, Animal City, PA 12345</p>
+              </div>
+              <h3 className="font-semibold text-gray-700 mb-2">Follow Us:</h3>
+              <div className="flex space-x-4">
+                <a href="#" className="text-gray-600 hover:text-blue-600 transition duration-300">
+                  Facebook
+                </a>
+                <a href="#" className="text-gray-600 hover:text-blue-600 transition duration-300">
+                  LinkedIn
+                </a>
+                <a href="#" className="text-gray-600 hover:text-blue-600 transition duration-300">
+                  Instagram
+                </a>
+              </div>
             </div>
-            <div className="mb-4">
-              <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
-                Email
-              </label>
-              <input
-                type="email"
-                id="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              />
+          </div>
+
+          {/* Map Section */}
+          <div className="mt-12">
+            <h2 className="text-2xl font-semibold text-gray-800 mb-4 text-center">Visit Us</h2>
+            <div className="flex justify-center">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.8354345099635!2d144.9537353153205!3d-37.81627987975171!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0b1f2b7b%3A0x5045675218cee8c0!2sVictoria!5e0!3m2!1sen!2sus!4v1615393213484!5m2!1sen!2sus"
+                width="600"
+                height="450"
+                className="border-0"
+                allowFullScreen=""
+                loading="lazy"
+                title="Google Maps"
+              ></iframe>
             </div>
-            <div className="mb-4">
-              <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="phone">
-                Phone Number
-              </label>
-              <input
-                type="tel"
-                id="phone"
-                value={phone}
-                onChange={(e) => setPhone(e.target.value)}
-                required
-                pattern="[0-9]{10}"
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              />
-            </div>
-            <div className="mb-4">
-              <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="petId">
-                Pet ID
-              </label>
-              <input
-                type="text"
-                id="petId"
-                value={petId}
-                onChange={(e) => setPetId(e.target.value)}
-                required
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              />
-            </div>
-            <div className="flex items-center justify-between">
-              <button
-                type="submit"
-                className="bg-orange-500 hover:bg-orange-600 text-white font-semibold py-2 px-4 rounded-lg"
-              >
-                Submit
-              </button>
-            </div>
-          </form>
+          </div>
         </div>
       </div>
     </>
