@@ -45,35 +45,35 @@ const Adopt = () => {
   const uniqueBreeds = [...new Set(pets.map((pet) => pet.breed))];
 
   const handleAddPet = () => {
-    // Form validation: Check if any field is empty or if ID is not unique
+    
     if (!newPet.id || !newPet.name || !newPet.breed || !newPet.age || !imageFile) {
       setFormError('Please fill in all the fields and upload an image.');
       return;
     }
     
-    // Check if the ID already exists
+    
     if (pets.some(pet => pet.id === Number(newPet.id))) {
       setFormError('Pet ID must be unique.');
       return;
     }
 
-    const newPetWithImage = { ...newPet, image: URL.createObjectURL(imageFile) }; // Convert file to URL
-    setPets([...pets, newPetWithImage]); // Add the new pet to the array
-    setIsAddPetOpen(false); // Close the add pet form
-    setNewPet({ id: '', name: '', breed: '', age: '', image: '' }); // Reset the form
-    setImageFile(null); // Reset the uploaded image file
-    setFormError(''); // Clear error message after successful submission
+    const newPetWithImage = { ...newPet, image: URL.createObjectURL(imageFile) }; 
+    setPets([...pets, newPetWithImage]); 
+    setIsAddPetOpen(false); // 
+    setNewPet({ id: '', name: '', breed: '', age: '', image: '' }); 
+    setImageFile(null); 
+    setFormError(''); 
   };
 
   const handleImageUpload = (e) => {
     const file = e.target.files[0];
     if (file) {
-      setImageFile(file); // Save the file to state
-      setNewPet({ ...newPet, image: URL.createObjectURL(file) }); // Set the image URL for preview
+      setImageFile(file); 
+      setNewPet({ ...newPet, image: URL.createObjectURL(file) }); 
     }
   };
 
-  // New function to delete a pet
+  
   const handleDeletePet = (petId) => {
     setPets(pets.filter(pet => pet.id !== petId));
   };
@@ -167,7 +167,7 @@ const Adopt = () => {
             </div>
           )}
 
-          {/* Add Pet Modal */}
+          
           {isAddPetOpen && (
             <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
               <div className="bg-white rounded-lg p-6 max-w-md w-full">
