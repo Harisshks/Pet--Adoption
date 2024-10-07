@@ -19,7 +19,7 @@ const Adopt = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedBreed, setSelectedBreed] = useState('All');
   const [isAddPetOpen, setIsAddPetOpen] = useState(false);
-  const [newPet, setNewPet] = useState({ name: '', breed: '', age: '', image: '' });
+  const [newPet, setNewPet] = useState({ id: '', name: '', breed: '', age: '', image: '' });
   const [formError, setFormError] = useState('');
   const [imageFile, setImageFile] = useState(null); // State for the uploaded image file
   const navigate = useNavigate();
@@ -45,16 +45,22 @@ const Adopt = () => {
   const uniqueBreeds = [...new Set(pets.map((pet) => pet.breed))];
 
   const handleAddPet = () => {
-    // Form validation: Check if any field is empty
-    if (!newPet.name || !newPet.breed || !newPet.age || !imageFile) {
+    // Form validation: Check if any field is empty or if ID is not unique
+    if (!newPet.id || !newPet.name || !newPet.breed || !newPet.age || !imageFile) {
       setFormError('Please fill in all the fields and upload an image.');
       return;
     }
+    
+    // Check if the ID already exists
+    if (pets.some(pet => pet.id === Number(newPet.id))) {
+      setFormError('Pet ID must be unique.');
+      return;
+    }
 
-    const newPetWithId = { ...newPet, id: pets.length + 1, image: URL.createObjectURL(imageFile) }; // Convert file to URL
-    setPets([...pets, newPetWithId]); // Add the new pet to the array
+    const newPetWithImage = { ...newPet, image: URL.createObjectURL(imageFile) }; // Convert file to URL
+    setPets([...pets, newPetWithImage]); // Add the new pet to the array
     setIsAddPetOpen(false); // Close the add pet form
-    setNewPet({ name: '', breed: '', age: '', image: '' }); // Reset the form
+    setNewPet({ id: '', name: '', breed: '', age: '', image: '' }); // Reset the form
     setImageFile(null); // Reset the uploaded image file
     setFormError(''); // Clear error message after successful submission
   };
@@ -65,6 +71,11 @@ const Adopt = () => {
       setImageFile(file); // Save the file to state
       setNewPet({ ...newPet, image: URL.createObjectURL(file) }); // Set the image URL for preview
     }
+  };
+
+  // New function to delete a pet
+  const handleDeletePet = (petId) => {
+    setPets(pets.filter(pet => pet.id !== petId));
   };
 
   return (
@@ -103,7 +114,7 @@ const Adopt = () => {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {filteredPets.map((pet) => (
-              <div key={pet.id} className="bg-white rounded-lg shadow-lg p-4 transition-transform transform hover:scale-105">
+              <div key={pet.id} className="bg-white rounded-lg shadow-lg p-4 transition-transform transform hover:scale-105 relative">
                 <img
                   src={pet.image}
                   alt={pet.name}
@@ -115,9 +126,15 @@ const Adopt = () => {
                 <p className="text-gray-600 mb-4">Pet ID: {pet.id}</p>
                 <button
                   onClick={() => handleAdoptClick(pet)}
-                  className="bg-orange-500 hover:bg-orange-600 text-white font-semibold py-2 px-4 rounded-lg"
+                  className="bg-orange-500 hover:bg-orange-600 text-white font-semibold py-2 px-4 rounded-lg mr-2"
                 >
                   Adopt {pet.name}
+                </button>
+                <button
+                  onClick={() => handleDeletePet(pet.id)}
+                  className="bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded-lg"
+                >
+                  Delete
                 </button>
               </div>
             ))}
@@ -157,6 +174,13 @@ const Adopt = () => {
                 <h2 className="text-2xl font-bold text-gray-800 mb-4">Add New Pet</h2>
                 <input
                   type="text"
+                  placeholder="Pet ID"
+                  value={newPet.id}
+                  onChange={(e) => setNewPet({ ...newPet, id: e.target.value })}
+                  className="border-2 border-gray-300 p-2 rounded-lg mb-4 w-full"
+                />
+                <input
+                  type="text"
                   placeholder="Pet Name"
                   value={newPet.name}
                   onChange={(e) => setNewPet({ ...newPet, name: e.target.value })}
@@ -164,14 +188,14 @@ const Adopt = () => {
                 />
                 <input
                   type="text"
-                  placeholder="Breed"
+                  placeholder="Pet Breed"
                   value={newPet.breed}
                   onChange={(e) => setNewPet({ ...newPet, breed: e.target.value })}
                   className="border-2 border-gray-300 p-2 rounded-lg mb-4 w-full"
                 />
                 <input
                   type="text"
-                  placeholder="Age"
+                  placeholder="Pet Age"
                   value={newPet.age}
                   onChange={(e) => setNewPet({ ...newPet, age: e.target.value })}
                   className="border-2 border-gray-300 p-2 rounded-lg mb-4 w-full"
@@ -185,12 +209,12 @@ const Adopt = () => {
                 {newPet.image && (
                   <img
                     src={newPet.image}
-                    alt="Preview"
+                    alt="Pet Preview"
                     className="w-full h-48 object-cover rounded-md mb-4"
                   />
                 )}
                 {formError && <p className="text-red-500 mb-4">{formError}</p>}
-                <div className="flex justify-between">
+                <div className="flex justify-between mt-4">
                   <button
                     onClick={() => setIsAddPetOpen(false)}
                     className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded-lg"
@@ -214,4 +238,3 @@ const Adopt = () => {
 };
 
 export default Adopt;
-
