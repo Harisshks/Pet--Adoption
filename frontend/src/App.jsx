@@ -7,6 +7,7 @@ import Contact from './pages/Contact';
 import Navbar from './components/Navbar';
 import WebLayout from './layout/WebLayout';
 
+
 function App() {
   return (
     <Router>      
