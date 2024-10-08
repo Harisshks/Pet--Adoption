@@ -31,7 +31,7 @@ const AddComponent = ({ onAdd }) => {
           placeholder="Pet Name"
           value={name}
           onChange={(e) => setName(e.target.value)}
-          className="input"
+          className="input p-1"
           required
         />
         <input
@@ -39,7 +39,7 @@ const AddComponent = ({ onAdd }) => {
           placeholder="Id"
           value={id}
           onChange={(e) => setid(e.target.value)}
-          className="input"
+          className="input p-1"
           required
         />
         <input
@@ -47,7 +47,7 @@ const AddComponent = ({ onAdd }) => {
           placeholder="Breed"
           value={breed}
           onChange={(e) => setBreed(e.target.value)}
-          className="input"
+          className="input p-1"
           required
         />
         <input
@@ -55,7 +55,7 @@ const AddComponent = ({ onAdd }) => {
           placeholder="Age"
           value={age}
           onChange={(e) => setAge(e.target.value)}
-          className="input"
+          className="input p-1"
           required
         />
         <input
@@ -63,9 +63,9 @@ const AddComponent = ({ onAdd }) => {
           placeholder="Image URL"
           value={image}
           onChange={(e) => setImage(e.target.value)}
-          className="input"
+          className="input p-1"
         />
-        <button type="submit" className="bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600">
+        <button type="submit" className="bg-gray-300 text-black font-semibold py-2 px-4 rounded-lg hover:bg-orange-600">
           Add Pet
         </button>
       </div>

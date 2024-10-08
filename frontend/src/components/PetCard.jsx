@@ -1,12 +1,8 @@
 import React from 'react';
 import { XIcon } from 'lucide-react';
-<<<<<<< Updated upstream
-import goldImage from '../assests/img/gold.jpg'; 
+// import goldImage from '../assests/img/gold.jpg'; 
 import { Link } from 'react-router-dom';
 
-=======
-// import goldImage from '../assests/img/gold.jpg'; 
->>>>>>> Stashed changes
 
 const PetCard = ({ pet, onDelete, onAdopt }) => {
   return (
@@ -29,9 +25,9 @@ const PetCard = ({ pet, onDelete, onAdopt }) => {
 
   <button
     onClick={() => onDelete(pet.name)}
-    className="bg-red-500 text-white py-1 px-2 rounded-lg flex items-center hover:bg-red-600"
+    className="bg-orange-500 text-white py-1 px-2 rounded-lg flex items-center hover:bg-orange-600"
   >
-    <XIcon size={18} className="mr-2" />
+    <XIcon size={18} className="mr-2 bg-red-500 rounded-lg" />
     Delete
   </button>
 </div>

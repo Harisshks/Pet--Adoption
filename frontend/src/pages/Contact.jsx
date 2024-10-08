@@ -1,6 +1,5 @@
 import { useState } from "react";
 import Navbar from "../components/Navbar";
-import {ubmitContactForm} from "../services/api"
 const Contact = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
