@@ -1,7 +1,7 @@
 import React from 'react';
 import { XIcon } from 'lucide-react';
 
-const PetCard = ({ pet, onDelete }) => {
+const PetCard = ({ pet, onDelete, onAdopt }) => {
   return (
     <div className="bg-white shadow-md rounded-lg overflow-hidden">
       <img src={pet.image} alt={pet.name} className="w-full h-48 object-cover" />
@@ -10,13 +10,23 @@ const PetCard = ({ pet, onDelete }) => {
         <p className="text-gray-600">Pet ID: {pet.id}</p>
         <p className="text-gray-600">Breed: {pet.breed}</p>
         <p className="text-gray-600">Age: {pet.age} years</p>
-        <button
-          onClick={() => onDelete(pet.id)}
-          className="bg-red-500 text-white py-1 px-2 mt-4 rounded-lg flex items-center hover:bg-red-600"
-        >
-          <XIcon size={18} className="mr-2" />
-          Delete
-        </button>
+        
+        <div className="flex justify-between items-center mt-4">
+          <button
+            onClick={() => onDelete(pet.name)}
+            className="bg-red-500 text-white py-1 px-2 rounded-lg flex items-center hover:bg-red-600"
+          >
+            <XIcon size={18} className="mr-2" />
+            Delete
+          </button>
+
+          <button
+            onClick={() => onAdopt(pet.id)}
+            className="bg-orange-500 text-white py-1 px-4 rounded-lg hover:bg-orange-600"
+          >
+            Adopt
+          </button>
+        </div>
       </div>
     </div>
   );

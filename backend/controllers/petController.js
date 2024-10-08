@@ -1,4 +1,4 @@
-const Pet = require('../models/petModel');
+const Pet = require("../models/petModel");
 
 // Get all pets
 const getPets = async (req, res) => {
@@ -6,7 +6,7 @@ const getPets = async (req, res) => {
     const pets = await Pet.find();
     res.json(pets);
   } catch (error) {
-    res.status(500).json({ message: 'Error fetching pets' });
+    res.status(500).json({ message: "Error fetching pets" });
   }
 };
 
@@ -26,23 +26,40 @@ const addPet = async (req, res) => {
     const createdPet = await pet.save();
     res.status(201).json(createdPet);
   } catch (error) {
-    res.status(400).json({ message: 'Error adding pet' });
+    res.status(400).json({ message: "Error adding pet" });
   }
 };
 
-// Delete a pet
+// // Delete a pet by id
+// const deletePet = async (req, res) => {
+//   try {
+//     const id = req.params.id;
+//     const currentrecord = await Pet.findOne({id});
+//     if (!currentrecord) {
+//       res.status(404).json({ message: "Pet not found" });
+//     }
+//     const deletePets = await Pet.findByIdAndDelete(id);
+//     res.status(200).json({ message: "Pet deleted" });
+//   } catch (e) {
+//     res.status(500).json();
+//   }
+// };
+
+// Delete a pet by name
 const deletePet = async (req, res) => {
   try {
-    const pet = await Pet.findById(req.params.id);
+    const { name } = req.params;
+    
+    // Find the pet by name and delete it
+    const pet = await Pet.findOneAndDelete({ name });
 
-    if (pet) {
-      await pet.remove();
-      res.json({ message: 'Pet removed' });
-    } else {
-      res.status(404).json({ message: 'Pet not found' });
+    if (!pet) {
+      return res.status(404).json({ message: 'Pet not found' });
     }
+
+    res.status(200).json({ message: 'Pet deleted successfully' });
   } catch (error) {
-    res.status(500).json({ message: 'Error deleting pet' });
+    res.status(500).json({ message: 'Error deleting pet', error: error.message });
   }
 };
 

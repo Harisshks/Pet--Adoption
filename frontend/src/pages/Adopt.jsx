@@ -19,12 +19,20 @@ const AdoptPage = () => {
     setPets((prevPets) => [...prevPets, newPet]);
   };
 
-  const handleDeletePet = async (id) => {
-    const success = await deletePet(id);
+  // const handleDeletePet = async (id) => {
+  //   const success = await deletePet(id);
+  //   if (success) {
+  //     setPets((prevPets) => prevPets.filter((pet) => pet.id !== id));
+  //   }
+  // };
+  const handleDeletePet = async (name) => {
+    const success = await deletePet(name); // Now pass the name
     if (success) {
-      setPets((prevPets) => prevPets.filter((pet) => pet.id !== id));
+      setPets((prevPets) => prevPets.filter((pet) => pet.name !== name));
     }
   };
+  
+
 
   return (
     <>

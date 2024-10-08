@@ -1,4 +1,6 @@
-const API_URL = 'http://localhost:7777'; 
+
+import axios from 'axios';
+const API_URL = 'http://localhost:7777';
 
 export const fetchPets = async () => {
   try {
@@ -26,14 +28,33 @@ export const addPet = async (pet) => {
   }
 };
 
-export const deletePet = async (id) => {
+export const deletePet = async (name) => {
   try {
-    await fetch(`${API_URL}/pets/${id}`, {
-      method: 'DELETE',
-    });
-    return true;
+    const response = await axios.delete(`${API_URL}/pets/${name}`);
+    return response.status === 200; // Return true if successful
   } catch (error) {
     console.error('Error deleting pet:', error);
-    return false;
+    return false; // Return false if there was an error
   }
 };
+
+// //delete by id
+// export const deletePet = async (id) => {
+//   try {
+//     await fetch(`${API_URL}/pets/${id}`, {
+//       method: 'DELETE',
+//     });
+//     return true;
+//   } catch (error) {
+//     console.error('Error deleting pet:', error);
+//     return false;
+//   }
+// };
+
+
+// const API_URL = "http://localhost:7777";
+
+// const fetchPets = () => axios.get(`${API_URL}/pets`);
+// const addPet = (pet) => axios.post(`${API_URL}/pets`, pet);
+// const deletePet = (id) => axios.delete(`${API_URL}/pets/${id}`);
+// export { fetchPets, addPet, deletePet };
