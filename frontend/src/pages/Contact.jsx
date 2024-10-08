@@ -174,14 +174,14 @@ const Contact = () => {
               Visit Us
             </h2>
             <div className="flex justify-center">
-              <iframe
+            <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5946.644414420531!2d77.06658145027512!3d11.036945940017459!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba85851693f4a5d%3A0x929165d4884224ee!2sSRI%20SHAKTHI%20INSTITUTE%20OF%20ENGINEERING%20AND%20TECHNOLOGY!5e0!3m2!1sen!2sin!4v1728316995404!5m2!1sen!2sin"
                 width="600"
                 height="450"
-                style="border:0;"
-                allowfullscreen=""
+                className="border-0"
+                allowFullScreen=""
                 loading="lazy"
-                // referrerpolicy="no-referrer-when-downgrade"
+                title="Google Maps"
               ></iframe>
             </div>
           </div>
