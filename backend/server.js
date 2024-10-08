@@ -4,11 +4,14 @@ const cors = require('cors')
 const app = express()
 const dbConn = require('./config/db')
 const Pets = require('./routes/petRoutes')
+const contactRoute = require('./routes/contactRoute'); // Adjust the path accordingly
+
 app.use(express.json())
 
 app.use(cors())
 const port = process.env.PORT || 7778
 app.use('/pets', Pets)
+app.use('/api', contactRoute);
 
 app.get('/', (req, res) => {
     res.status(400).json("Welcome")

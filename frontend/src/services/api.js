@@ -1,3 +1,5 @@
+import { Contact } from "lucide-react";
+
 const API_URL = 'http://localhost:7777'; 
 
 export const fetchPets = async () => {
@@ -35,5 +37,25 @@ export const deletePet = async (id) => {
   } catch (error) {
     console.error('Error deleting pet:', error);
     return false;
+  }
+};
+export const submitContactForm = async (contactData) => {
+  try {
+    const response = await fetch(`${API_URL}/contact`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(contactData),
+    });
+    
+    if (!response.ok) {
+      throw new Error('Error submitting contact form');
+    }
+
+    return await response.json();
+  } catch (error) {
+    console.error('Error submitting contact form:', error);
+    return null;
   }
 };

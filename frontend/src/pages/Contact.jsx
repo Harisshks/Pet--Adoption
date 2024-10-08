@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Navbar from "../components/Navbar";
-
+import {ubmitContactForm} from "../services/api"
 const Contact = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -9,14 +9,36 @@ const Contact = () => {
   const [message, setMessage] = useState("");
   const [showConfirmation, setShowConfirmation] = useState(false);
 
-  const handleSubmit = (e) => {
+   const handleSubmit = async (e) => {
     e.preventDefault();
-    setMessage("Thank you for your inquiry. We will get back to you shortly.");
-    setShowConfirmation(true);
-    setName("");
-    setEmail("");
-    setPhone("");
-    setPetId("");
+    
+    const contactData = { name, email, phone, petId, petName, message };
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(contactData),
+      });
+
+      const result = await response.json();
+      if (response.ok) {
+        console.log('Form submitted:', result);
+        setMessage("Thank you for your inquiry. We will get back to you shortly.");
+        setShowConfirmation(true);
+        setName("");
+        setEmail("");
+        setPhone("");
+        setPetId("");
+        setPetName("");
+      } else {
+        console.error('Error:', result.message);
+      }
+    } catch (error) {
+      console.error('Submission failed:', error);
+    }
   };
 
   return (
@@ -111,6 +133,22 @@ const Contact = () => {
                   className="w-full border rounded-lg py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500 transition duration-300"
                 />
               </div>
+              <div className="mb-6">
+                <label
+                  className="block text-gray-700 text-sm font-bold mb-2"
+                  htmlFor="name"
+                >
+                  Pet Name
+                </label>
+                <input
+                  type="text"
+                  id="petname"
+                  value={name}
+                  onChange={(e) => setPetName(e.target.value)}
+                  required
+                  className="w-full border rounded-lg py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500 transition duration-300"
+                />
+                </div>
               <button
                 type="submit"
                 className="w-full bg-orange-500 hover:bg-orange-600 text-white font-semibold py-3 rounded-lg transition duration-300 transform hover:-translate-y-1 focus:outline-none focus:ring-4 focus:ring-orange-300"
@@ -191,3 +229,176 @@ const Contact = () => {
 };
 
 export default Contact;
+
+
+// import { useState } from "react";
+// import Navbar from "../components/Navbar";
+
+// const Contact = () => {
+//   const [name, setName] = useState("");
+//   const [email, setEmail] = useState("");
+//   const [phone, setPhone] = useState("");
+//   const [petId, setPetId] = useState("");
+//   const [petName, setPetName] = useState("");
+//   const [message, setMessage] = useState("");
+//   const [showConfirmation, setShowConfirmation] = useState(false);
+
+//   // handleSubmit function for submitting form data
+//   const handleSubmit = async (e) => {
+//     e.preventDefault();
+    
+//     const contactData = { name, email, phone, petId, petName, message };
+
+//     try {
+//       const response = await fetch('/api/contact', {
+//         method: 'POST',
+//         headers: {
+//           'Content-Type': 'application/json',
+//         },
+//         body: JSON.stringify(contactData),
+//       });
+
+//       const result = await response.json();
+//       if (response.ok) {
+//         console.log('Form submitted:', result);
+//         setMessage("Thank you for your inquiry. We will get back to you shortly.");
+//         setShowConfirmation(true);
+//         setName("");
+//         setEmail("");
+//         setPhone("");
+//         setPetId("");
+//         setPetName("");
+//       } else {
+//         console.error('Error:', result.message);
+//       }
+//     } catch (error) {
+//       console.error('Submission failed:', error);
+//     }
+//   };
+
+//   return (
+//     <>
+//       <Navbar />
+//       <div className="min-h-screen bg-gray-50 py-12">
+//         <div className="container mx-auto px-4 lg:px-8">
+//           <h1 className="text-4xl font-extrabold text-gray-800 text-center mb-8">
+//             Contact Us
+//           </h1>
+
+//           {showConfirmation && (
+//             <div
+//               className="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-6 rounded-md"
+//               role="alert"
+//             >
+//               <p>{message}</p>
+//             </div>
+//           )}
+
+//           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+//             {/* Contact Form */}
+//             <form
+//               onSubmit={handleSubmit}
+//               className="bg-white rounded-lg shadow-lg p-8 transition-shadow hover:shadow-2xl"
+//             >
+//               <h2 className="text-2xl font-semibold text-gray-800 mb-6">
+//                 Get In Touch
+//               </h2>
+//               <div className="mb-6">
+//                 <label
+//                   className="block text-gray-700 text-sm font-bold mb-2"
+//                   htmlFor="name"
+//                 >
+//                   Name
+//                 </label>
+//                 <input
+//                   type="text"
+//                   id="name"
+//                   value={name}
+//                   onChange={(e) => setName(e.target.value)}
+//                   required
+//                   className="w-full border rounded-lg py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500 transition duration-300"
+//                 />
+//               </div>
+//               <div className="mb-6">
+//                 <label
+//                   className="block text-gray-700 text-sm font-bold mb-2"
+//                   htmlFor="email"
+//                 >
+//                   Email
+//                 </label>
+//                 <input
+//                   type="email"
+//                   id="email"
+//                   value={email}
+//                   onChange={(e) => setEmail(e.target.value)}
+//                   required
+//                   className="w-full border rounded-lg py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500 transition duration-300"
+//                 />
+//               </div>
+//               <div className="mb-6">
+//                 <label
+//                   className="block text-gray-700 text-sm font-bold mb-2"
+//                   htmlFor="phone"
+//                 >
+//                   Phone Number
+//                 </label>
+//                 <input
+//                   type="tel"
+//                   id="phone"
+//                   value={phone}
+//                   onChange={(e) => setPhone(e.target.value)}
+//                   required
+//                   pattern="[0-9]{10}"
+//                   className="w-full border rounded-lg py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500 transition duration-300"
+//                 />
+//               </div>
+//               <div className="mb-6">
+//                 <label
+//                   className="block text-gray-700 text-sm font-bold mb-2"
+//                   htmlFor="petId"
+//                 >
+//                   Pet ID
+//                 </label>
+//                 <input
+//                   type="text"
+//                   id="petId"
+//                   value={petId}
+//                   onChange={(e) => setPetId(e.target.value)}
+//                   required
+//                   className="w-full border rounded-lg py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500 transition duration-300"
+//                 />
+//               </div>
+//               <div className="mb-6">
+//                 <label
+//                   className="block text-gray-700 text-sm font-bold mb-2"
+//                   htmlFor="petName"
+//                 >
+//                   Pet Name
+//                 </label>
+//                 <input
+//                   type="text"
+//                   id="petName"
+//                   value={petName}
+//                   onChange={(e) => setPetName(e.target.value)}
+//                   required
+//                   className="w-full border rounded-lg py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500 transition duration-300"
+//                 />
+//               </div>
+//               <button
+//                 type="submit"
+//                 className="w-full bg-orange-500 hover:bg-orange-600 text-white font-semibold py-3 rounded-lg transition duration-300 transform hover:-translate-y-1 focus:outline-none focus:ring-4 focus:ring-orange-300"
+//               >
+//                 Submit
+//               </button>
+//             </form>
+            
+//             {/* Contact Information */}
+//             {/* ... */}
+//           </div>
+//         </div>
+//       </div>
+//     </>
+//   );
+// };
+
+// export default Contact;
