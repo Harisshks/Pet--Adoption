@@ -7,6 +7,7 @@ const PetCard = ({ pet, onDelete }) => {
       <img src={pet.image} alt={pet.name} className="w-full h-48 object-cover" />
       <div className="p-4">
         <h2 className="text-xl font-semibold mb-2">{pet.name}</h2>
+        <p className="text-gray-600">Pet ID: {pet.id}</p>
         <p className="text-gray-600">Breed: {pet.breed}</p>
         <p className="text-gray-600">Age: {pet.age} years</p>
         <button

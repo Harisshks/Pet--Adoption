@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { addPet } from '../services/api';
 
 const AddComponent = ({ onAdd }) => {
+  const [id, setid] = useState('');
   const [name, setName] = useState('');
   const [breed, setBreed] = useState('');
   const [age, setAge] = useState('');
@@ -9,11 +10,12 @@ const AddComponent = ({ onAdd }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const newPet = { name, breed, age, image };
+    const newPet = { id, name, breed, age, image };
     const addedPet = await addPet(newPet);
     if (addedPet) {
       onAdd(addedPet);
     }
+    setid('');
     setName('');
     setBreed('');
     setAge('');
@@ -29,6 +31,14 @@ const AddComponent = ({ onAdd }) => {
           placeholder="Pet Name"
           value={name}
           onChange={(e) => setName(e.target.value)}
+          className="input"
+          required
+        />
+        <input
+          type="text"
+          placeholder="Id"
+          value={id}
+          onChange={(e) => setid(e.target.value)}
           className="input"
           required
         />

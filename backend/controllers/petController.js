@@ -13,9 +13,10 @@ const getPets = async (req, res) => {
 // Add a new pet
 const addPet = async (req, res) => {
   try {
-    const { name, breed, age, image } = req.body;
+    const { id, name, breed, age, image } = req.body;
 
     const pet = new Pet({
+      id,
       name,
       breed,
       age,
