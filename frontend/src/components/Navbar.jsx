@@ -19,18 +19,14 @@ const Navbar = () => {
   };
 
   return (
-    <div className='w-full h-[4rem] flex items-center justify-between bg-slate-200 shadow-md px-4'>
+    <div className='w-full h-[4rem] flex items-center justify-between bg-slate-200 shadow-md shadow-black px-4'>
       <div className='flex items-center'>
         <PawPrint color="#f1603b" className='mr-2' />
         <div className='font-bold text-3xl text-orange-500'>PawNest</div>
       </div>
 
       <div className='hidden md:flex justify-end items-center'>
-        <input
-          type="text"
-          placeholder="Search..."
-          className="border-2 border-gray-300 rounded-md p-2 mr-4"
-        />
+       
         <ul className='flex list-none flex-row justify-end gap-6'>
           {navdata.map((data, index) => (
             <NavLink key={index} to={data.path} className='hover:opacity-60'>
@@ -67,3 +63,4 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
