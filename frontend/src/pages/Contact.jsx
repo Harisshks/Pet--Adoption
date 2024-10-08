@@ -1,30 +1,28 @@
 import { useState } from "react";
 import Navbar from "../components/Navbar";
-import {ubmitContactForm} from "../services/api"
+import { submitContactForm } from "../services/api"; // Import the function from services/api
+
 const Contact = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [petId, setPetId] = useState("");
+  const [petName, setPetName] = useState(""); // Add state for petName
   const [message, setMessage] = useState("");
   const [showConfirmation, setShowConfirmation] = useState(false);
 
-   const handleSubmit = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    
+  
     const contactData = { name, email, phone, petId, petName, message };
-
+  
+    // Log the data to ensure it's correctly populated
+    console.log(contactData);
+  
     try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(contactData),
-      });
-
-      const result = await response.json();
-      if (response.ok) {
+      const result = await submitContactForm(contactData);
+  
+      if (result) {
         console.log('Form submitted:', result);
         setMessage("Thank you for your inquiry. We will get back to you shortly.");
         setShowConfirmation(true);
@@ -33,14 +31,15 @@ const Contact = () => {
         setPhone("");
         setPetId("");
         setPetName("");
+        setMessage("");
       } else {
-        console.error('Error:', result.message);
+        console.error('Error submitting the form');
       }
     } catch (error) {
       console.error('Submission failed:', error);
     }
   };
-
+  
   return (
     <>
       <Navbar />
@@ -66,7 +65,7 @@ const Contact = () => {
               className="bg-white rounded-lg shadow-lg p-8 transition-shadow hover:shadow-2xl"
             >
               <h2 className="text-2xl font-semibold text-gray-800 mb-6">
-                Get In Touch
+              Adopt, love, change lives.
               </h2>
               <div className="mb-6">
                 <label
@@ -136,19 +135,34 @@ const Contact = () => {
               <div className="mb-6">
                 <label
                   className="block text-gray-700 text-sm font-bold mb-2"
-                  htmlFor="name"
+                  htmlFor="petName"
                 >
                   Pet Name
                 </label>
                 <input
                   type="text"
-                  id="petname"
-                  value={name}
+                  id="petName"
+                  value={petName}
                   onChange={(e) => setPetName(e.target.value)}
                   required
                   className="w-full border rounded-lg py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500 transition duration-300"
                 />
-                </div>
+              </div>
+              <div className="mb-6">
+                <label
+                  className="block text-gray-700 text-sm font-bold mb-2"
+                  htmlFor="message"
+                >
+                  Message
+                </label>
+                <textarea
+                  id="message"
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
+                  required
+                  className="w-full border rounded-lg py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500 transition duration-300"
+                />
+              </div>
               <button
                 type="submit"
                 className="w-full bg-orange-500 hover:bg-orange-600 text-white font-semibold py-3 rounded-lg transition duration-300 transform hover:-translate-y-1 focus:outline-none focus:ring-4 focus:ring-orange-300"
@@ -212,13 +226,12 @@ const Contact = () => {
             </h2>
             <div className="flex justify-center">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5946.644414420531!2d77.06658145027512!3d11.036945940017459!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba85851693f4a5d%3A0x929165d4884224ee!2sSRI%20SHAKTHI%20INSTITUTE%20OF%20ENGINEERING%20AND%20TECHNOLOGY!5e0!3m2!1sen!2sin!4v1728316995404!5m2!1sen!2sin"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5946.644414420531!2d77.06658145027512!3d11.036945940017459!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba85851693f4a5d%3A0x929165d4884224ee!2sSRI%20SHAKTHI%20INSTITUTE%20OF%20ENGINEERING%20AND%20TECHNOLOGY!5e0!3m2!1sen!2sin!4v1729483939002!5m2!1sen!2sin"
                 width="100%"
                 height="450"
-                className="border-0 rounded-lg shadow-lg"
+                className="border rounded-lg shadow-lg"
                 allowFullScreen=""
                 loading="lazy"
-                title="Google Maps"
               ></iframe>
             </div>
           </div>
@@ -229,6 +242,8 @@ const Contact = () => {
 };
 
 export default Contact;
+
+
 
 
 // import { useState } from "react";

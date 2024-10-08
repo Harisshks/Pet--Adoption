@@ -1,25 +1,27 @@
-require('dotenv').config()
-const express = require('express')
-const cors = require('cors')
-const app = express()
-const dbConn = require('./config/db')
-const Pets = require('./routes/petRoutes')
-const contactRoute = require('./routes/contactRoute'); // Adjust the path accordingly
+require('dotenv').config();
+const express = require('express');
+const cors = require('cors');
+const dbConn = require('./config/db'); // Ensure your database connection is initialized
+const Pets = require('./routes/petRoutes');
+const contactRoute = require('./routes/contactRoute');
 
-app.use(express.json())
+const app = express();
 
-app.use(cors())
-const port = process.env.PORT || 7778
-app.use('/pets', Pets)
-app.use('/api', contactRoute);
+app.use(express.json());
+app.use(cors());
+
+const port = process.env.PORT || 7778;
+
+app.use('/contact', contactRoute);
+app.use('/pets', Pets);
 
 app.get('/', (req, res) => {
-    res.status(400).json("Welcome")
-})
+    res.status(200).json("Welcome"); 
+});
 
 app.listen(port, () => {
-    console.log(`Server running in : ${port}`)
-})
+    console.log(`Server running on port: ${port}`);
+});
 
 
 
