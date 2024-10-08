@@ -1,14 +1,18 @@
 import React from 'react';
 import { XIcon } from 'lucide-react';
+<<<<<<< Updated upstream
 import goldImage from '../assests/img/gold.jpg'; 
 import { Link } from 'react-router-dom';
 
+=======
+// import goldImage from '../assests/img/gold.jpg'; 
+>>>>>>> Stashed changes
 
 const PetCard = ({ pet, onDelete, onAdopt }) => {
   return (
     <div className="bg-white shadow-md rounded-lg overflow-hidden">
-      {/* <img src={pet.image} alt={pet.name} className="w-full h-48 object-cover" /> */}
-      <img src={goldImage} alt={pet.name} className="w-full h-48 object-cover" />
+      <img src={pet.image} alt={pet.name} className="w-full h-48 object-cover" />
+      {/* <img src={goldImage} alt={pet.name} className="w-full h-48 object-cover" /> */}
       <div className="p-4">
         <h2 className="text-xl font-semibold mb-2">{pet.name}</h2>
         <p className="text-gray-600">Pet ID: {pet.id}</p>
