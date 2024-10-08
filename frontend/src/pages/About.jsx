@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons'; 
 import { faLinkedin } from '@fortawesome/free-brands-svg-icons'; 
 import jeyakumarImage from '../assests/img/IMG_20230729_154555 (1).jpg';
-import harisshImage from '../assests/img/22CS049_p.jpg';
+import harisshImage from '../assests/img/imghar.jpg';
 import balajiImage from '../assests/img/IMG_20240912_060716.jpg';
 import adithyaImage from '../assests/img/adhi.jpg';
 
