@@ -1,6 +1,5 @@
 const Pet = require("../models/petModel");
 
-// Get all pets
 const getPets = async (req, res) => {
   try {
     const pets = await Pet.find();
@@ -10,7 +9,6 @@ const getPets = async (req, res) => {
   }
 };
 
-// Add a new pet
 const addPet = async (req, res) => {
   try {
     const { id, name, breed, age, image } = req.body;
@@ -30,22 +28,7 @@ const addPet = async (req, res) => {
   }
 };
 
-// // Delete a pet by id
-// const deletePet = async (req, res) => {
-//   try {
-//     const id = req.params.id;
-//     const currentrecord = await Pet.findOne({id});
-//     if (!currentrecord) {
-//       res.status(404).json({ message: "Pet not found" });
-//     }
-//     const deletePets = await Pet.findByIdAndDelete(id);
-//     res.status(200).json({ message: "Pet deleted" });
-//   } catch (e) {
-//     res.status(500).json();
-//   }
-// };
 
-// Delete a pet by name
 const deletePet = async (req, res) => {
   try {
     const { name } = req.params;

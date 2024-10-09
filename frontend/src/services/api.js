@@ -1,6 +1,3 @@
-import axios from 'axios';
-import { Contact } from "lucide-react";
-
 const API_URL = 'http://localhost:7777'; 
 
 export const fetchPets = async () => {
@@ -41,13 +38,20 @@ export const deletePet = async (id) => {
   }
 };
 
+
+
 export const submitContactForm = async (contactData) => {
   try {
-    const response = await axios.post('/api/contact', contactData); // Adjust the route as per your API endpoint
-    return response.data;
+    const response = await fetch(`${API_URL}/contact`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(contactData),
+    });
+    return await response.json();
   } catch (error) {
-    console.error('Error submitting contact form:', error);
+    console.error('Error adding pet:', error);
     return null;
   }
 };
-

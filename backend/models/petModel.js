@@ -19,7 +19,7 @@ const petSchema = mongoose.Schema({
   },
   image: {
     type: String,
-    required: false, // Not all pets may have images
+    required: false, 
   },
 });
 

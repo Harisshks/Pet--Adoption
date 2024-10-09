@@ -3,7 +3,7 @@ const express = require('express');
 const cors = require('cors');
 const dbConn = require('./config/db'); // Ensure your database connection is initialized
 const Pets = require('./routes/petRoutes');
-const contactRoute = require('./routes/contactRoute');
+const Contact = require('./routes/contactRoute');
 
 const app = express();
 
@@ -12,7 +12,7 @@ app.use(cors());
 
 const port = process.env.PORT || 7778;
 
-app.use('/contact', contactRoute);
+app.use('/contact', Contact);
 app.use('/pets', Pets);
 
 app.get('/', (req, res) => {
@@ -22,27 +22,3 @@ app.get('/', (req, res) => {
 app.listen(port, () => {
     console.log(`Server running on port: ${port}`);
 });
-
-
-
-// const express = require('express');
-// const dotenv = require('dotenv');
-// const cors = require('cors');
-// const connectDB = require('./config/db');
-// const petRoutes = require('./routes/petRoutes');
-
-// dotenv.config();
-
-// connectDB(); // Connect to MongoDB
-
-// const app = express();
-
-// app.use(cors()); // Allow requests from frontend
-// app.use(express.json()); // Parse incoming JSON
-
-// app.use('/pets', petRoutes); // Use the pet routes
-
-// const PORT = process.env.PORT || 5000;
-// app.listen(PORT, () => {
-//   console.log(`Server running on port ${PORT}`);
-// });

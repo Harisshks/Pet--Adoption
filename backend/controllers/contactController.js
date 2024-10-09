@@ -1,9 +1,9 @@
-const Contact = require('../models/contactModel'); 
+const Contact = require('../'); 
 
 const submitContactForm = async (req, res) => {
   const { name, email, phone, petId, petName, message } = req.body;
 
-  console.log(req.body);  // Log the request body to see if it's coming in correctly
+  console.log(req.body);  
 
   try {
     const userContact = new Contact({
