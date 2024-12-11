@@ -1,29 +1,41 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
-import { submitContactForm } from "../services/api"; 
-import {Toaster,toast} from 'sonner'
-import butt from "../assests/img/buttthanks.jpg"
+import { submitContactForm } from "../services/api";
+import { Toaster, toast } from "sonner";
+import butt from "../assests/img/buttthanks.jpg";
+import { useLocation } from "react-router-dom";
+
 const Contact = () => {
+  const location = useLocation();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [petId, setPetId] = useState("");
-  const [petName, setPetName] = useState(""); 
+  const [petName, setPetName] = useState("");
   const [message, setMessage] = useState("");
   const [showConfirmation, setShowConfirmation] = useState(false);
 
+  useEffect(() => {
+    if (location.state) {
+      setPetId(location.state.petId || " ");
+      setPetName(location.state.petName || " ");
+    }
+  }, [location.state]);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
+
     const contactData = { name, email, phone, petId, petName, message };
-      console.log(contactData);
-  
+    console.log(contactData);
+
     try {
       const result = await submitContactForm(contactData);
-  
+
       if (result) {
-        console.log('Form submitted:', result);
-        setMessage("Thank you for your inquiry. We will get back to you shortly.");
+        console.log("Form submitted:", result);
+        setMessage(
+          "Thank you for your inquiry. We will get back to you shortly."
+        );
         setShowConfirmation(true);
         setName("");
         setEmail("");
@@ -32,13 +44,13 @@ const Contact = () => {
         setPetName("");
         setMessage("");
       } else {
-        console.error('Error submitting the form');
+        console.error("Error submitting the form");
       }
     } catch (error) {
-      console.error('Submission failed:', error);
+      console.error("Submission failed:", error);
     }
   };
-  
+
   return (
     <>
       <Navbar />
@@ -64,7 +76,7 @@ const Contact = () => {
               className="bg-white rounded-lg shadow-lg p-8 transition-shadow hover:shadow-2xl"
             >
               <h2 className="text-2xl font-semibold text-gray-800 mb-6">
-              Adopt, love, change lives.
+                Adopt, love, change lives.
               </h2>
               <div className="mb-6">
                 <label
@@ -162,9 +174,9 @@ const Contact = () => {
                   className="w-full border rounded-lg py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500 transition duration-300"
                 />
               </div>
-              <Toaster richColors position="top-center" expand={true}/>
+              <Toaster richColors position="top-center" expand={true} />
               <button
-                   onClick={() => toast.success('Successfully Submitted')}
+                onClick={() => toast.success("Successfully Submitted")}
                 className="w-full bg-orange-500 hover:bg-orange-600 text-white font-semibold py-3 rounded-lg transition duration-300 transform hover:-translate-y-1 focus:outline-none focus:ring-4 focus:ring-orange-300"
               >
                 Submit
@@ -177,9 +189,8 @@ const Contact = () => {
                 Our Contact Information
               </h2>
               <p className="text-gray-600 mb-4">
-                If you have any questions or need assistance, feel free to
-                reach out to us via the contact form or using the information
-                below:
+                If you have any questions or need assistance, feel free to reach
+                out to us via the contact form or using the information below:
               </p>
               <div className="mb-6">
                 <h3 className="font-semibold text-gray-700">Email:</h3>
@@ -214,13 +225,12 @@ const Contact = () => {
                   className="text-gray-600 hover:text-blue-600 transition-colors duration-300"
                 >
                   Instagram
-                </a>  
-            </div>
+                </a>
+              </div>
 
-            <div className="flex items-center justify-center mt-6">
-            <img src={butt} className=" h-[40%]" alt="thankyou"/>
-            </div>
-
+              <div className="flex items-center justify-center mt-6">
+                <img src={butt} className=" h-[40%]" alt="thankyou" />
+              </div>
             </div>
           </div>
 
@@ -247,6 +257,3 @@ const Contact = () => {
 };
 
 export default Contact;
-
-
-

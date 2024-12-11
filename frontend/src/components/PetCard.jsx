@@ -18,6 +18,7 @@ const PetCard = ({ pet, onDelete, onAdopt }) => {
         <div className="flex justify-between items-center mt-4">
   <Link
     to="/contact"
+    state={{petId: pet.id, petName: pet.name}}
     className="bg-orange-500 text-white py-1 px-4 rounded-lg hover:bg-orange-600"
   >
     Adopt
@@ -27,7 +28,7 @@ const PetCard = ({ pet, onDelete, onAdopt }) => {
     onClick={() => onDelete(pet.name)}
     className="bg-orange-500 text-white py-1 px-2 rounded-lg flex items-center hover:bg-orange-600"
   >
-    <XIcon size={18} className="mr-2 bg-red-500 rounded-lg" />
+    <XIcon size={18} className="mr-2 rounded-lg" />
     Delete
   </button>
 </div>
