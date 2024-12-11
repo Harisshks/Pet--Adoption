@@ -1,7 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
-const dbConn = require('./config/db'); // Ensure your database connection is initialized
+const dbConn = require('./config/db'); 
 const Pets = require('./routes/petRoutes');
 const Contact = require('./routes/contactRoute');
 
