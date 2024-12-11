@@ -6,7 +6,9 @@
     border: 0px;
 }
 
-.active{
-    background-color: #ed5d0a;
-    border-radius: 15px;
+.active {
+    border-bottom: 3px solid;
+    border-image-source: linear-gradient(to right, #ed5d0a, #ff800a);
+    border-image-slice: 1;
   }
+  
