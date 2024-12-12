@@ -6,6 +6,9 @@ import About from './pages/About';
 import Contact from './pages/Contact';
 import Navbar from './components/Navbar';
 import WebLayout from './layout/WebLayout';
+import Login from './components/Login';
+import Signup from './components/Signup';
+
 
 
 function App() {
@@ -18,6 +21,8 @@ function App() {
             <Route path="/adopt" element={<Adopt />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/login" component={Login} />
+            <Route path="/signup" component={Signup} />
           </Routes>
     </Router>
   );
