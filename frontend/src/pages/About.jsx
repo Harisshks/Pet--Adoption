@@ -26,7 +26,7 @@ const About = () => {
       },
     },
     {
-      name: 'Adithya RS',
+      name: 'Adithya',
       socials: {
         gmail: 'mailto:adithyars22cse@srishakthi.ac.in',
       },
