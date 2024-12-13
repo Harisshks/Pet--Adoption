@@ -14,7 +14,10 @@ const Home = () => {
   const toggleAccordion = (index) => {
     setActiveIndex(activeIndex === index ? null : index);
   };
-
+  const handleAdoptClick = () => {
+    navigate("adopt");
+  };
+  
   return (
     <>
       <Navbar />
@@ -47,8 +50,16 @@ const Home = () => {
             Adopt a pet
           </a>
         </div> */}
-       <div className="bg-orange-500 h-screen w-full flex flex-col items-center justify-center text-center text-white relative">
-  <div className="relative p-10">
+       <div className="bg-orange-500 py-72 flex flex-col items-center justify-center text-center text-white relative">
+
+  {/* Floating Hearts */}
+  <div className="absolute inset-0">
+    <div className="absolute top-8 left-10 text-white text-4xl animate-heart">&#9825;</div>
+    <div className="absolute top-16 right-20 text-white text-4xl animate-heart">&#9825;</div>
+    <div className="absolute top-32 left-1/3 text-white text-6xl animate-heart">&#9825;</div>
+    <div className="absolute bottom-10 right-1/3 text-white text-7xl animate-heart">&#9825;</div>
+    <div className="absolute bottom-32 left-40 text-white text-9xl animate-heart">&#9825;</div>
+  <div className="relative p-12">
     <div className="bg-white rounded-full p-10 relative inline-block">
       <h1 className="text-orange-500 text-xl font-bold">ThePawNest Foundation</h1>
       <p className="text-orange-500 text-3xl font-extrabold">Adopt, Don’t Shop</p>
@@ -58,23 +69,17 @@ const Home = () => {
       <h2 className="text-2xl font-bold">#AdoptLove</h2>
       <p className="mt-4 max-w-xl mx-auto text-base">
         Approximately 1,478 dogs & cats die every day on roads in India. <br />
-        <span className="font-bold">ThePetNest</span> is on a mission to provide every dog and cat a home before 2035. Join the
-        <span className="font-bold"> ThePetNest Community</span> and help set up pet houses in your surroundings for strays.
+        <span className="font-bold">ThePawNest</span> is on a mission to provide every dog and cat a home. Join the
+        <span className="font-bold"> ThePawNest Community</span> and help set up pet houses in your surroundings for strays.
       </p>
     </div>
   </div>
 
-  <button className="mt-6 bg-white text-orange-500 font-bold py-2 px-6 rounded-full shadow-md hover:bg-orange-100 transition">
+  <a 
+  href="/adopt"
+  className="mt-6 bg-white text-orange-500 font-bold py-2 px-6 rounded-full shadow-md hover:bg-orange-100 transition">
     Adopt a pet
-  </button>
-
-  {/* Floating Hearts */}
-  <div className="absolute inset-0">
-    <div className="absolute top-8 left-10  text-white text-4xl animate-heart">&#10085;</div>
-    <div className="absolute top-16 right-20 text-white text-5xl animate-heart">&#10085;</div>
-    <div className="absolute top-32 left-1/3 text-white text-6xl animate-heart">&#10085;</div>
-    <div className="absolute bottom-10 right-1/3 text-white text-4xl animate-heart">&#10085;</div>
-    <div className="absolute bottom-32 left-40 text-white text-6xl animate-heart">&#10085;</div>
+  </a>
 
   </div>
 </div>
@@ -153,12 +158,12 @@ const Home = () => {
           </div>
         </div>
 
-        {/* Section 3 */}
-        <h1 className="text-3xl font-bold text-gray-800 text-center py-1">
+        {/* Section 3 */}\<div className='bg-gray-100' py-5>
+        <h1 className="text-3xl font-bold text-gray-800 text-center py-3">
           How it works?
         </h1>
 
-        <div className="flex justify-around items-center text-center py-1">
+        <div className="flex justify-around items-center text-center py-3">
           <div className="flex flex-col items-center">
             <div className="text-4xl py-2">
               <Search className="h-10 w-10" />
@@ -182,6 +187,7 @@ const Home = () => {
             <h2 className="font-bold py-2">Adopt</h2>
             <p className="text-sm">Finally adopt the dog or cat you love</p>
           </div>
+        </div>
         </div>
 
         {/* Section 4 - Accordion */}
@@ -245,17 +251,36 @@ const Home = () => {
       </div>
     </div>
   </div>
+  </div>
 
         {/* Section 5 */}
-        
-      {/* Hearts Background */}
-      
-
-
-      {/* Main Content */}
-      
-    </div>
-    
+        <div className="bg-gray-100 py-16 px-8 w-full">
+        <h2 className="text-gray-800 text-3xl font-bold text-center mb-8">PLANNING TO ADOPT A PET?</h2>
+        <div className="flex flex-col md:flex-row justify-center items-center space-y-6 md:space-y-0 md:space-x-6">
+          {/* Checklist for New Adopters */}
+          <div className="text-center max-w-sm">
+            <div className="text-orange-600 text-6xl mb-4">&#8962;</div>
+            <h3 className="text-orange-600 text-lg font-bold">CHECKLIST FOR NEW ADOPTERS</h3>
+            <p className="text-gray-600 mt-2 mb-4">Make the adoption transition as smooth as possible.</p>
+            <button className="bg-orange-600 text-white px-6 py-2 rounded-full hover:bg-orange-700 transition">LEARN MORE</button>
+          </div>
+          {/* How Old is a Dog in Human Years? */}
+          <div className="text-center max-w-sm">
+            <div className="text-orange-600 text-6xl mb-4">&#128054;</div>
+            <h3 className="text-orange-600 text-lg font-bold">HOW OLD IS A DOG IN HUMAN YEARS?</h3>
+            <p className="text-gray-600 mt-2 mb-4">Learn to translate dog years to human years just for fun, and vice versa.</p>
+            <button className="bg-orange-600 text-white px-6 py-2 rounded-full hover:orange-700 transition">LEARN MORE</button>
+          </div>
+          {/* Pet Adoption FAQs */}
+          <div className="text-center max-w-sm">
+            <div className="text-orange-600 text-6xl mb-4">&#128172;</div>
+            <h3 className="text-orange-600 text-lg font-bold">PET ADOPTION FAQS</h3>
+            <p className="text-gray-600 mt-2 mb-4">Get answers to all the questions you haven’t thought of for your adoption.</p>
+            <button className="bg-orange-600 text-white px-6 py-2 rounded-full hover:bg-orange-700 transition">LEARN MORE</button>
+          </div>
+        </div>   
+</div>
+          
     </>
   );
 };
