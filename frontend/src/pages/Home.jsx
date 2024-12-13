@@ -39,7 +39,7 @@ const Home = () => {
 
 
         {/* Section 2 */}
-        {/* <div className="bg-gray-100 py-16 flex flex-col items-center">
+        <div className="bg-gray-100 py-16 flex flex-col items-center">
           <h1 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
             Re-Home and Adopt a Pet
           </h1>
@@ -49,40 +49,8 @@ const Home = () => {
           <a href="/adopt" className="bg-orange-500 hover:bg-orange-600 text-white font-semibold py-3 px-8 rounded-lg shadow">
             Adopt a pet
           </a>
-        </div> */}
-       <div className="bg-orange-500 py-72 flex flex-col items-center justify-center text-center text-white relative">
-
-  {/* Floating Hearts */}
-  <div className="absolute inset-0">
-    <div className="absolute top-8 left-10 text-white text-4xl animate-heart">&#9825;</div>
-    <div className="absolute top-16 right-20 text-white text-4xl animate-heart">&#9825;</div>
-    <div className="absolute top-32 left-1/3 text-white text-6xl animate-heart">&#9825;</div>
-    <div className="absolute bottom-10 right-1/3 text-white text-7xl animate-heart">&#9825;</div>
-    <div className="absolute bottom-32 left-40 text-white text-9xl animate-heart">&#9825;</div>
-  <div className="relative p-12">
-    <div className="bg-white rounded-full p-10 relative inline-block">
-      <h1 className="text-orange-500 text-xl font-bold">ThePawNest Foundation</h1>
-      <p className="text-orange-500 text-3xl font-extrabold">Adopt, Don’t Shop</p>
-    </div>
-
-    <div className="mt-10 text-white">
-      <h2 className="text-2xl font-bold">#AdoptLove</h2>
-      <p className="mt-4 max-w-xl mx-auto text-base">
-        Approximately 1,478 dogs & cats die every day on roads in India. <br />
-        <span className="font-bold">ThePawNest</span> is on a mission to provide every dog and cat a home. Join the
-        <span className="font-bold"> ThePawNest Community</span> and help set up pet houses in your surroundings for strays.
-      </p>
-    </div>
-  </div>
-
-  <a 
-  href="/adopt"
-  className="mt-6 bg-white text-orange-500 font-bold py-2 px-6 rounded-full shadow-md hover:bg-orange-100 transition">
-    Adopt a pet
-  </a>
-
-  </div>
-</div>
+        </div>
+       
 
         {/* Section 3 */}
         <div className="py-16 bg-white">
@@ -158,12 +126,12 @@ const Home = () => {
           </div>
         </div>
 
-        {/* Section 3 */}\<div className='bg-gray-100' py-5>
-        <h1 className="text-3xl font-bold text-gray-800 text-center py-3">
+        {/* Section 3 */}\<div className='bg-gray-100' >
+        <h1 className="text-3xl font-bold text-gray-800 text-center py-7">
           How it works?
         </h1>
 
-        <div className="flex justify-around items-center text-center py-3">
+        <div className="flex justify-around items-center text-center py-4">
           <div className="flex flex-col items-center">
             <div className="text-4xl py-2">
               <Search className="h-10 w-10" />
@@ -191,7 +159,7 @@ const Home = () => {
         </div>
 
         {/* Section 4 - Accordion */}
-        <div className="w-full flex items-center justify-center h-[100%] bg-white px-4 pt-16">
+        <div className="w-full flex items-center justify-center py-16 bg-white px-4 pt-16">
   <div className="max-w-screen-xl mx-auto w-full md:w-2/3 lg:w-1/2">
     <div className="space-y-8">
       <div className="border-b border-gray-300 py-4">
@@ -244,7 +212,7 @@ const Home = () => {
           </span>
         </div>
         {activeIndex === 4 && (
-          <p className="text-gray-700 mt-2">
+          <p className="text-gray-700 mt-2 py-7">
             Yes, if the adoption doesn't work out, you can return the pet for re-adoption.
           </p>
         )}
@@ -252,6 +220,40 @@ const Home = () => {
     </div>
   </div>
   </div>
+  {/* Section 6 */}
+  <div className="bg-orange-500 py-72 flex flex-col items-center justify-center text-center text-white relative">
+
+  {/* Floating Hearts */}
+  <div className="absolute inset-0">
+    <div className="absolute top-8 left-10 text-white text-4xl animate-heart">&#9825;</div>
+    <div className="absolute top-16 right-20 text-white text-4xl animate-heart">&#9825;</div>
+    <div className="absolute top-32 left-1/3 text-white text-6xl animate-heart">&#9825;</div>
+    <div className="absolute bottom-10 right-1/3 text-white text-7xl animate-heart">&#9825;</div>
+    <div className="absolute bottom-32 left-40 text-white text-9xl animate-heart">&#9825;</div>
+  <div className="relative p-12">
+    <div className="bg-white rounded-full p-10 relative inline-block">
+      <h1 className="text-orange-500 text-xl font-bold">ThePawNest Foundation</h1>
+      <p className="text-orange-500 text-3xl font-extrabold">Adopt, Don’t Shop</p>
+    </div>
+
+    <div className="mt-10 text-white">
+      <h2 className="text-2xl font-bold">#AdoptLove</h2>
+      <p className="mt-4 max-w-xl mx-auto text-base">
+        Approximately 1,478 dogs & cats die every day on roads in India. <br />
+        <span className="font-bold">ThePawNest</span> is on a mission to provide every dog and cat a home. Join the
+        <span className="font-bold"> ThePawNest Community</span> and help set up pet houses in your surroundings for strays.
+      </p>
+    </div>
+  </div>
+
+  <a 
+  href="/adopt"
+  className="mt-6 bg-white text-orange-500 font-bold py-2 px-6 rounded-full shadow-md hover:bg-orange-100 transition">
+    Adopt a pet
+  </a>
+
+  </div>
+</div>
 
         {/* Section 5 */}
         <div className="bg-gray-100 py-16 px-8 w-full">
@@ -269,7 +271,7 @@ const Home = () => {
             <div className="text-orange-600 text-6xl mb-4">&#128054;</div>
             <h3 className="text-orange-600 text-lg font-bold">HOW OLD IS A DOG IN HUMAN YEARS?</h3>
             <p className="text-gray-600 mt-2 mb-4">Learn to translate dog years to human years just for fun, and vice versa.</p>
-            <button className="bg-orange-600 text-white px-6 py-2 rounded-full hover:orange-700 transition">LEARN MORE</button>
+            <button className="bg-orange-600 text-white px-6 py-2 rounded-full hover:bg-orange-700 transition">LEARN MORE</button>
           </div>
           {/* Pet Adoption FAQs */}
           <div className="text-center max-w-sm">
