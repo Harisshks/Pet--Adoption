@@ -1,6 +1,5 @@
 import React from 'react';
 import { XIcon } from 'lucide-react';
-// import goldImage from '../assests/img/gold.jpg'; 
 import { Link } from 'react-router-dom';
 
 
@@ -19,7 +18,7 @@ const PetCard = ({ pet, onDelete, onAdopt }) => {
   <Link
     to="/contact"
     state={{petId: pet.id, petName: pet.name}}
-    className="bg-orange-500 text-white py-1 px-4 rounded-lg hover:bg-orange-600"
+    className="bg-orange-500 text-white py-1 px-4 rounded-lg hover:bg-orange-500"
   >
     Adopt
   </Link>

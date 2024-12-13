@@ -24,25 +24,21 @@ export const fetchPets = async () => {
 
 export const addPet = async (pet) => {
   try {
-    const response = await fetch(`${API_URL}/pets`, {
-      method: "POST",
+    const response = await axios.post(`${API_URL}/pets`,pet, {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(pet),
     });
-    return await response.json();
+    return response.data;
   } catch (error) {
     console.error("Error adding pet:", error);
     return null;
   }
 };
 
-export const deletePet = async (id) => {
+export const deletePet = async (name) => {
   try {
-    await fetch(`${API_URL}/pets/${id}`, {
-      method: "DELETE",
-    });
+    await axios.delete(`${API_URL}/pets/${name}`);
     return true;
   } catch (error) {
     console.error("Error deleting pet:", error);
@@ -67,35 +63,27 @@ export const submitContactForm = async (contactData) => {
 };
 
 // Signup request
-// export const signup = async (userData) => {
-//   try {
-//     const response = await axios.post(`${API_URL}/signup`, userData);
-//     return response.data;
-//   } catch (error) {
-//     console.error("Signup Error:", error);
-//     throw error;
-//   }
-// };
-
 export const signup = async (userData) => {
-  const response = await axios.post(`${API_URL}/signup`, userData);
-  return response.data; // This can return some data, e.g., success message or user info
+  try {
+    const response = await axios.post(`${API_URL}/signup`, userData);
+    return response.data;
+  } catch (error) {
+    console.error("Signup Error:", error);
+    throw error;
+  }
 };
-// Login request
-// export const login = async (credentials) => {
-//   try {
-//     const response = await axios.post(`${API_URL}/login`, credentials);
-//     return response.data;  // contains JWT token and user details
-//   } catch (error) {
-//     console.error("Login Error:", error);
-//     throw error;
-//   }
-// };
 
+// Login request
 export const login = async (credentials) => {
-  const response = await axios.post(`${API_URL}/login`, credentials);
-  return response.data; // Assuming the response includes the token
+  try {
+    const response = await axios.post(`${API_URL}/login`, credentials);
+    return response.data;  // contains JWT token and user details
+  } catch (error) {
+    console.error("Login Error:", error);
+    throw error;
+  }
 };
+
 
 // Save token to localStorage for future requests
 export const saveToken = (token) => {

@@ -71,7 +71,7 @@ const AddComponent = ({ onAdd }) => {
         />
         <button
           type="submit"
-          className="bg-gray-300 text-black font-semibold py-2 px-4 rounded-lg hover:bg-orange-600"
+          className="bg-gray-300 text-black font-semibold py-2 px-4 rounded-lg hover:bg-orange-500"
         >
           Add Pet
         </button>
