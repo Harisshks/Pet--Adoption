@@ -22,5 +22,11 @@
     animation: float 4s ease-in-out infinite;
   }
   
+  .active {
+    border-bottom: 3px solid;
+    border-image-source: linear-gradient(to right, #ed5d0a, #ff800a);
+    border-image-slice: 1;
+  }
+  
   
   

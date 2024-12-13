@@ -70,7 +70,7 @@ const Home = () => {
 
   {/* Floating Hearts */}
   <div className="absolute inset-0">
-    <div className="absolute top-8 left-10 text-white text-4xl animate-heart">&#10085;</div>
+    <div className="absolute top-8 left-10  text-white text-4xl animate-heart">&#10085;</div>
     <div className="absolute top-16 right-20 text-white text-5xl animate-heart">&#10085;</div>
     <div className="absolute top-32 left-1/3 text-white text-6xl animate-heart">&#10085;</div>
     <div className="absolute bottom-10 right-1/3 text-white text-4xl animate-heart">&#10085;</div>
