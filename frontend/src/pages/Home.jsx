@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Navbar from '../components/Navbar';
+import phimg from '../assests/img/ebceef4f-a68f-4183-8ada-8f27b37c10ab.jpeg';
 import myim from '../assests/img/adopt-a-pet.jpg';
 import dogImage from '../assests/img/doggoquote.jpg';
 import dogsearch from '../assests/img/search.png';
@@ -18,14 +19,24 @@ const Home = () => {
     <>
       <Navbar />
 
-      <div>
-        {/* Section 1 */}
-        <div className='h-screen w-full'>
-          <img src={myim} className='h-[80%] w-full justify-center' alt="Adopt a Pet"></img>
-        </div>
+      <div className="h-screen w-full">
+  <img
+    src={phimg}
+    alt="Adopt a Pet"
+    className="w-full h-[80%] object-cover sm:hidden"
+  />
+  
+  <img
+    src={myim}
+    alt="Adopt a Pet"
+    className="w-full h-[80%] object-cover hidden sm:block"
+  />
+</div>
+
+
 
         {/* Section 2 */}
-        <div className="bg-gray-100 py-16 flex flex-col items-center">
+        {/* <div className="bg-gray-100 py-16 flex flex-col items-center">
           <h1 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
             Re-Home and Adopt a Pet
           </h1>
@@ -35,7 +46,38 @@ const Home = () => {
           <a href="/adopt" className="bg-orange-500 hover:bg-orange-600 text-white font-semibold py-3 px-8 rounded-lg shadow">
             Adopt a pet
           </a>
-        </div>
+        </div> */}
+       <div className="bg-orange-500 h-screen w-full flex flex-col items-center justify-center text-center text-white relative">
+  <div className="relative p-10">
+    <div className="bg-white rounded-full p-10 relative inline-block">
+      <h1 className="text-orange-500 text-xl font-bold">ThePawNest Foundation</h1>
+      <p className="text-orange-500 text-3xl font-extrabold">Adopt, Don’t Shop</p>
+    </div>
+
+    <div className="mt-10 text-white">
+      <h2 className="text-2xl font-bold">#AdoptLove</h2>
+      <p className="mt-4 max-w-xl mx-auto text-base">
+        Approximately 1,478 dogs & cats die every day on roads in India. <br />
+        <span className="font-bold">ThePetNest</span> is on a mission to provide every dog and cat a home before 2035. Join the
+        <span className="font-bold"> ThePetNest Community</span> and help set up pet houses in your surroundings for strays.
+      </p>
+    </div>
+  </div>
+
+  <button className="mt-6 bg-white text-orange-500 font-bold py-2 px-6 rounded-full shadow-md hover:bg-orange-100 transition">
+    Adopt a pet
+  </button>
+
+  {/* Floating Hearts */}
+  <div className="absolute inset-0">
+    <div className="absolute top-8 left-10 text-white text-4xl animate-heart">&#10085;</div>
+    <div className="absolute top-16 right-20 text-white text-5xl animate-heart">&#10085;</div>
+    <div className="absolute top-32 left-1/3 text-white text-6xl animate-heart">&#10085;</div>
+    <div className="absolute bottom-10 right-1/3 text-white text-4xl animate-heart">&#10085;</div>
+    <div className="absolute bottom-32 left-40 text-white text-6xl animate-heart">&#10085;</div>
+
+  </div>
+</div>
 
         {/* Section 3 */}
         <div className="py-16 bg-white">
@@ -143,7 +185,7 @@ const Home = () => {
         </div>
 
         {/* Section 4 - Accordion */}
-        <div className="flex items-center justify-center h-[100%] bg-white px-4 pt-16">
+        <div className="w-full flex items-center justify-center h-[100%] bg-white px-4 pt-16">
   <div className="max-w-screen-xl mx-auto w-full md:w-2/3 lg:w-1/2">
     <div className="space-y-8">
       <div className="border-b border-gray-300 py-4">
@@ -203,8 +245,17 @@ const Home = () => {
       </div>
     </div>
   </div>
-</div>
-      </div>
+
+        {/* Section 5 */}
+        
+      {/* Hearts Background */}
+      
+
+
+      {/* Main Content */}
+      
+    </div>
+    
     </>
   );
 };
