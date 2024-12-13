@@ -1,28 +1,39 @@
-import axios from 'axios';
-const API_URL = 'http://localhost:7777'; 
+import axios from "axios";
+const API_URL = "http://localhost:7777";
+
+// export const fetchPets = async () => {
+//   try {
+//     const response = await fetch(`${API_URL}/pets`);
+//     return await response.json();
+//   } catch (error) {
+//     console.error('Error fetching pets:', error);
+//     return [];
+//   }
+// };
 
 export const fetchPets = async () => {
   try {
-    const response = await fetch(`${API_URL}/pets`);
-    return await response.json();
+    const response = await axios.get(`${API_URL}/pets`);
+    return response.data; 
   } catch (error) {
     console.error('Error fetching pets:', error);
     return [];
   }
 };
 
+
 export const addPet = async (pet) => {
   try {
     const response = await fetch(`${API_URL}/pets`, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(pet),
     });
     return await response.json();
   } catch (error) {
-    console.error('Error adding pet:', error);
+    console.error("Error adding pet:", error);
     return null;
   }
 };
@@ -30,11 +41,11 @@ export const addPet = async (pet) => {
 export const deletePet = async (id) => {
   try {
     await fetch(`${API_URL}/pets/${id}`, {
-      method: 'DELETE',
+      method: "DELETE",
     });
     return true;
   } catch (error) {
-    console.error('Error deleting pet:', error);
+    console.error("Error deleting pet:", error);
     return false;
   }
 };
@@ -42,19 +53,18 @@ export const deletePet = async (id) => {
 export const submitContactForm = async (contactData) => {
   try {
     const response = await fetch(`${API_URL}/contact`, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(contactData),
     });
     return await response.json();
   } catch (error) {
-    console.error('Error adding pet:', error);
+    console.error("Error adding pet:", error);
     return null;
   }
 };
-
 
 // Signup request
 // export const signup = async (userData) => {
@@ -69,7 +79,7 @@ export const submitContactForm = async (contactData) => {
 
 export const signup = async (userData) => {
   const response = await axios.post(`${API_URL}/signup`, userData);
-  return response.data;  // This can return some data, e.g., success message or user info
+  return response.data; // This can return some data, e.g., success message or user info
 };
 // Login request
 // export const login = async (credentials) => {
@@ -84,20 +94,20 @@ export const signup = async (userData) => {
 
 export const login = async (credentials) => {
   const response = await axios.post(`${API_URL}/login`, credentials);
-  return response.data;  // Assuming the response includes the token
+  return response.data; // Assuming the response includes the token
 };
 
 // Save token to localStorage for future requests
 export const saveToken = (token) => {
-  localStorage.setItem('authToken', token);
+  localStorage.setItem("authToken", token);
 };
 
 // Get token from localStorage
 export const getToken = () => {
-  return localStorage.getItem('authToken');
+  return localStorage.getItem("authToken");
 };
 
 // Clear token from localStorage
 export const logout = () => {
-  localStorage.removeItem('authToken');
+  localStorage.removeItem("authToken");
 };

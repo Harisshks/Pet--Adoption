@@ -73,12 +73,12 @@ const Navbar = () => {
           ) : (
             <>
               <NavLink to="/signup">
-                <button className="px-4 py-2 bg-orange-500 text-white rounded-lg font-semibold hover:bg-orange-600">
+                <button className="px-4 py-2 bg-orange-500 text-white rounded-lg font-semibold hover:opacity-70">
                   Create Account
                 </button>
               </NavLink>
               <NavLink to="/login">
-                <button className="px-4 py-2 bg-orange-500 text-white rounded-lg font-semibold hover:bg-purple-600">
+                <button className="px-4 py-2 bg-orange-500 text-white rounded-lg font-semibold hover:opacity-70">
                   Login
                 </button>
               </NavLink>
@@ -115,12 +115,12 @@ const Navbar = () => {
             ) : (
               <>
                 <NavLink to="/signup">
-                  <button className="w-full px-4 py-2 bg-orange-500 text-white rounded-lg font-semibold hover:bg-orange-600 mb-2">
+                  <button className="w-full px-4 py-2 bg-orange-500 text-white rounded-lg font-semibold hover:opacity-70 mb-2">
                     Create Account
                   </button>
                 </NavLink>
                 <NavLink to="/login">
-                  <button className="w-full px-4 py-2 bg-orange-500 text-white rounded-lg font-semibold hover:bg-purple-600">
+                  <button className="w-full px-4 py-2 bg-orange-500 text-white rounded-lg font-semibold hover:opacity-70">
                     Login
                   </button>
                 </NavLink>
